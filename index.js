@@ -1,15 +1,14 @@
 /**
  * Aplica a cor #BECCC3 no background do body da página
  */
-function background(){
-
+ function background(){
     /**
      * Tarefa/Issue  1
      *
      * Desenvolva uma função capaz de trocar a cor do fundo da página, ou seja,
      * alterar o background do body para a cor #BECCC3.
      */
-
+     document.body.style.backgroundColor = "#BECCC3";
 }
 
 /**
@@ -18,13 +17,16 @@ function background(){
  * na div id='result'
  */
 function show(){
-
      /**
       * Issue  2
       *
       * Recupera os valores dos campos de texto cujo o id='fname' e id='lname' e apresente o nome
       * e o sobrenome de uma pessoa (separado por um espaço) na div id='result'
       */
+      let fname = document.querySelector("#fname").value;
+      let lname = document.querySelector("#lname").value;
+      
+      document.querySelector("#result").innerHTML = `<p>${fname} ${lname}</p>`;
 }
 
 /**
@@ -34,7 +36,7 @@ function show(){
 function search(){
 
     var data = [{name: "Rodrigo"}, {name: "Ricardo"}, {name: "Fabio"}, {name: "Alex"}, {name: "Sílvia"}];
-
+    
     /**
      * Issue 3
      *
@@ -51,7 +53,18 @@ function search(){
      *
      * Além disso, a função removeAllChildren abaixo também pode ser útil para o desenvolvimento da solução
      */
-
+    removeAllChildren(document.querySelector("#search"));
+    let input = document.querySelector("#name").value.toUpperCase();
+    let nomes = data.map(nome =>{
+        return nome.name;
+    })
+    nomes.forEach(nome => {
+        if((nome.substring(0,input.length).toUpperCase() === input) && input.length>0){
+            document.querySelector("#search").innerHTML += `<div>${nome}</div>`
+        } 
+    })
+    // if (nome.substring(1,nome.length) == input.substring(1,input.length)) {document.querySelector("#search").innerHTML = `<p>${nome}</p>`}
+    // else {removeAllChildren(document.querySelector("#search"))}
 }
 
 /**
